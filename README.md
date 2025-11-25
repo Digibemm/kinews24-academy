@@ -3,7 +3,7 @@
 KI-Transformationsagentur für den deutschen Mittelstand
 
 ## Live Website
-- Production: https://lightcyan-tarsier-722242.hostingersite.com/
+- Production: https://leadstrategen.de/
 - Development: `npm run dev`
 
 ## Features
