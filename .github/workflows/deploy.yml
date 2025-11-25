@@ -35,3 +35,14 @@ jobs:
           server-dir: public_html/
           dangerous-clean-slate: false
           log-level: verbose
+
+      - name: Fix file permissions via SSH
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          script: |
+            cd public_html
+            find . -type f -exec chmod 644 {} \;
+            find . -type d -exec chmod 755 {} \;
