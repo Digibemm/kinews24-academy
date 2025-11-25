@@ -3,7 +3,7 @@
 KI-Transformationsagentur für den deutschen Mittelstand
 
 ## Live Website
-- Production: TBD
+- Production: https://lightcyan-tarsier-722242.hostingersite.com/
 - Development: `npm run dev`
 
 ## Features
