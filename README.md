@@ -3,7 +3,7 @@
 KI-Transformationsagentur für den deutschen Mittelstand
 
 ## Live Website
-- Production: https://leadstrategen.de/
+- Production: https://lightgray-cobra-696071.hostingersite.com/
 - Development: `npm run dev`
 
 ## Features
