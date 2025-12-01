@@ -52,7 +52,16 @@ const Footer: React.FC = () => {
 
            <div>
               <h4 className="text-white font-bold mb-6">KONTAKT</h4>
-              <p className="text-sm text-brand-muted mb-2">📍 Hamburg, DE</p>
+              <div className="space-y-2 mb-3">
+                <p className="text-sm text-brand-muted">📍 Hamburg, DE</p>
+                <div className="relative group inline-block">
+                  <p className="text-sm text-brand-muted cursor-help">📍 Tutzing, DE</p>
+                  <div className="absolute left-0 bottom-full mb-2 hidden group-hover:block bg-slate-800 text-white text-xs px-3 py-2 rounded-lg whitespace-nowrap shadow-xl border border-white/10 z-50">
+                    Waxensteinstraße 4, 82327 Tutzing
+                    <div className="absolute top-full left-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-l-transparent border-r-transparent border-t-slate-800"></div>
+                  </div>
+                </div>
+              </div>
               <p className="text-sm text-brand-muted">📧 hallo@kinews24.de</p>
            </div>
         </div>
