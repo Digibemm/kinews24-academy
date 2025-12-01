@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
            <div>
               <h4 className="text-white font-bold mb-6">RESSOURCEN</h4>
               <ul className="space-y-3 text-sm text-brand-muted">
-                 <li><span className="text-slate-600 cursor-not-allowed">Blog (demnächst)</span></li>
+                 <li><a href="/blog" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/blog'); window.dispatchEvent(new Event('popstate')); window.scrollTo(0, 0); }} className="hover:text-brand-cyan transition-colors">Blog</a></li>
                  <li><a href="/faq" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/faq'); window.dispatchEvent(new Event('popstate')); window.scrollTo(0, 0); }} className="hover:text-brand-cyan transition-colors">FAQ</a></li>
                  <li><a href="/coi-calculator" onClick={(e) => { e.preventDefault(); window.history.pushState({}, '', '/coi-calculator'); window.dispatchEvent(new Event('popstate')); }} className="hover:text-brand-cyan transition-colors">COI Rechner</a></li>
                  <li><a href="#case-studies" onClick={(e) => { e.preventDefault(); const el = document.querySelector('#case-studies'); if (el) { if (window.location.pathname !== '/') { window.history.pushState({}, '', '/#case-studies'); window.dispatchEvent(new Event('popstate')); setTimeout(() => { const element = document.querySelector('#case-studies'); element?.scrollIntoView({ behavior: 'smooth' }); }, 100); } else { el.scrollIntoView({ behavior: 'smooth' }); } } }} className="hover:text-brand-cyan transition-colors">Referenzen</a></li>

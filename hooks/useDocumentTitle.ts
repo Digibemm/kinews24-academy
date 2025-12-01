@@ -125,5 +125,10 @@ export const PAGE_META: Record<string, PageMeta> = {
   '/faq': {
     title: 'FAQ - Häufig gestellte Fragen zu KI-Beratung & Academy | KINEWS24-Academy',
     description: 'Alle Antworten zu KI-Roadmap, Kosten, BAFA-Förderung, Ablauf, Academy und Implementierung. Über 30 FAQs zu KI-Integration für den Mittelstand.'
+  },
+  '/blog': {
+    title: 'KI-Blog: Praxiswissen für den Mittelstand | KINEWS24-Academy',
+    description: 'KI-Wissen, das wirkt: DSGVO-konforme KI, EU AI Act, KI-Roadmap erstellen. Praktische Anleitungen ohne Marketing-Blabla. Von KI-Experten für den Mittelstand.',
+    keywords: 'KI-Blog, DSGVO-konforme KI, EU AI Act, KI-Roadmap, KI-Compliance, KI-Strategie'
   }
 };

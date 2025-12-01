@@ -24,7 +24,10 @@ import DatenschutzPage from './pages/DatenschutzPage';
 import AGBPage from './pages/AGBPage';
 import TerminPage from './pages/TerminPage';
 import FAQPage from './pages/FAQPage';
+import BlogPage from './pages/BlogPage';
+import BlogPostPage from './pages/BlogPostPage';
 import { useDocumentTitle, PAGE_META } from './hooks/useDocumentTitle';
+import { blogPosts } from './types/blog';
 
 // Global function to open contact modal
 declare global {
@@ -107,6 +110,10 @@ const App: React.FC = () => {
           <ThinkAIPage />
         ) : currentPath === '/keynotes' ? (
           <KeynotesPage />
+        ) : currentPath === '/blog' ? (
+          <BlogPage />
+        ) : currentPath.startsWith('/blog/') ? (
+          <BlogPostPage slug={currentPath.replace('/blog/', '')} />
         ) : currentPath === '/coi-calculator' ? (
           <div className="pt-20 min-h-screen flex flex-col bg-[#F8FAFC]">
             <CostOfInaction />
