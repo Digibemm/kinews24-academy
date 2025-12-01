@@ -35,6 +35,7 @@ declare global {
 
 const App: React.FC = () => {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const [contactModal, setContactModal] = useState<{ isOpen: boolean; leadType: LeadType; message?: string }>({
     isOpen: false,
     leadType: 'roadmap',
@@ -53,16 +54,28 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const handlePopState = () => {
-      setCurrentPath(window.location.pathname);
-      // Scroll to top on route change
-      window.scrollTo(0, 0);
-      // Handle hash scrolling after navigation if present
-      if (window.location.hash) {
+      // Start transition effect
+      setIsTransitioning(true);
+
+      // Short delay for visual feedback
+      setTimeout(() => {
+        setCurrentPath(window.location.pathname);
+        // Scroll to top on route change
+        window.scrollTo(0, 0);
+
+        // End transition effect
         setTimeout(() => {
-          const el = document.querySelector(window.location.hash);
-          el?.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
-      }
+          setIsTransitioning(false);
+
+          // Handle hash scrolling after navigation if present
+          if (window.location.hash) {
+            setTimeout(() => {
+              const el = document.querySelector(window.location.hash);
+              el?.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+          }
+        }, 150);
+      }, 150);
     };
 
     window.addEventListener('popstate', handlePopState);
@@ -172,6 +185,16 @@ const App: React.FC = () => {
 
       {/* Cookie Consent */}
       <CookieConsent />
+
+      {/* Page Transition Overlay */}
+      {isTransitioning && (
+        <div
+          className="fixed inset-0 bg-brand-dark/30 backdrop-blur-sm z-[100] pointer-events-none animate-fade-in"
+          style={{
+            animation: 'fadeInOut 300ms ease-in-out'
+          }}
+        />
+      )}
 
     </div>
   );

@@ -10,6 +10,7 @@ const Navbar: React.FC = () => {
   const [showAcademy, setShowAcademy] = useState(false);
   const [mobileRoadmapOpen, setMobileRoadmapOpen] = useState(false);
   const [mobileAcademyOpen, setMobileAcademyOpen] = useState(false);
+  const [currentPath, setCurrentPath] = useState(window.location.pathname);
   const roadmapTimeout = React.useRef<NodeJS.Timeout | null>(null);
   const academyTimeout = React.useRef<NodeJS.Timeout | null>(null);
 
@@ -17,6 +18,12 @@ const Navbar: React.FC = () => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handlePathChange = () => setCurrentPath(window.location.pathname);
+    window.addEventListener('popstate', handlePathChange);
+    return () => window.removeEventListener('popstate', handlePathChange);
   }, []);
 
   const handleRoadmapEnter = () => {
@@ -275,13 +282,17 @@ const Navbar: React.FC = () => {
 
             {/* Other Nav Links */}
             {mainNavLinks.map((link) => {
+              const isActive = currentPath === link.href;
+
               if (link.label === 'COI-Rechner') {
                 return (
                   <Tooltip key={link.label} text="Berechnen Sie Ihre Stillstandskosten in 2 Minuten" position="bottom">
                     <a
                       href={link.href}
                       onClick={(e) => handleNavigation(e, link.href)}
-                      className="text-sm font-medium transition-colors text-brand-cyan hover:text-white"
+                      className={`text-sm font-medium transition-colors ${
+                        isActive ? 'text-brand-cyan' : 'text-brand-muted hover:text-white'
+                      }`}
                     >
                       {link.label}
                     </a>
@@ -294,7 +305,9 @@ const Navbar: React.FC = () => {
                   key={link.label}
                   href={link.href}
                   onClick={(e) => handleNavigation(e, link.href)}
-                  className="text-sm font-medium text-brand-muted hover:text-white transition-colors"
+                  className={`text-sm font-medium transition-colors ${
+                    isActive ? 'text-white' : 'text-brand-muted hover:text-white'
+                  }`}
                 >
                   {link.label}
                 </a>
@@ -397,23 +410,28 @@ const Navbar: React.FC = () => {
             </div>
 
             {/* Other Links */}
-            {mainNavLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={(e) => {
-                  handleNavigation(e, link.href);
-                  setIsOpen(false);
-                }}
-                className={`block px-3 py-3 text-base font-medium rounded-md transition-colors ${
-                  link.label === 'COI-Rechner'
-                    ? 'text-brand-cyan hover:text-white hover:bg-white/5'
-                    : 'text-brand-muted hover:text-white hover:bg-white/5'
-                }`}
-              >
-                {link.label}
-              </a>
-            ))}
+            {mainNavLinks.map((link) => {
+              const isActive = currentPath === link.href;
+              return (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={(e) => {
+                    handleNavigation(e, link.href);
+                    setIsOpen(false);
+                  }}
+                  className={`block px-3 py-3 text-base font-medium rounded-md transition-colors ${
+                    isActive
+                      ? 'text-white bg-white/10'
+                      : link.label === 'COI-Rechner'
+                      ? 'text-brand-cyan hover:text-white hover:bg-white/5'
+                      : 'text-brand-muted hover:text-white hover:bg-white/5'
+                  }`}
+                >
+                  {link.label}
+                </a>
+              );
+            })}
 
             {/* CTA Button */}
             <div className="pt-4 mt-4 border-t border-white/10">
