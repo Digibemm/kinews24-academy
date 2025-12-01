@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '../components/Button';
-import { CheckCircle2, ArrowRight, Calendar, TrendingUp, Target, Zap } from 'lucide-react';
+import { CheckCircle2, ArrowRight, Calendar, TrendingUp, Target, Zap, Shield } from 'lucide-react';
 
 const RoadmapPage: React.FC = () => {
   return (
@@ -216,7 +216,7 @@ const RoadmapPage: React.FC = () => {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 gap-8">
               {[
                 {
                   title: "Ihr Aktionsplan",
@@ -229,6 +229,10 @@ const RoadmapPage: React.FC = () => {
                 {
                   title: "Tool-Empfehlungen",
                   items: ["Welche KI-Tools passen zu Ihnen?", "Wie setzen Sie sie ein?", "Was müssen Sie beachten?", "Wo liegen die Risiken?"]
+                },
+                {
+                  title: "Rechtliche Beratung",
+                  items: ["Compliance KI-Verordnung", "Compliance DSGVO", "Praxistaugliche Lösungen", "Rechtssichere Umsetzung"]
                 }
               ].map((item, idx) => (
                 <div key={idx} className="bg-white p-8 rounded-2xl border border-slate-200 hover:shadow-xl transition-shadow">
@@ -331,6 +335,13 @@ const RoadmapPage: React.FC = () => {
                     <div>
                       <p className="font-bold text-slate-900">Sofort umsetzbar</p>
                       <p className="text-slate-600 text-sm">Aktionsplan mit konkreten ersten Schritten für diese Woche</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Shield className="w-6 h-6 text-brand-accent shrink-0 mt-1" />
+                    <div>
+                      <p className="font-bold text-slate-900">Compliance</p>
+                      <p className="text-slate-600 text-sm">Sie wissen, welche rechtlichen Vorgaben Sie einhalten müssen</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
