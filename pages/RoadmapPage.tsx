@@ -389,6 +389,10 @@ const RoadmapPage: React.FC = () => {
                   answer: "Von der ersten Anfrage bis zur fertigen Roadmap vergehen in der Regel 2-4 Wochen – abhängig von Ihrer Verfügbarkeit und der Komplexität. Der Workshop selbst dauert ca. 2-3 Stunden, die Analyse und Ausarbeitung übernehmen wir. Die Präsentation der Ergebnisse dauert etwa 60-90 Minuten."
                 },
                 {
+                  question: "Wie stellen Sie sicher, dass wir rechtlich auf der sicheren Seite sind?",
+                  answer: "Genau dafür haben wir eine Fachanwältin im Team. Sie begleitet jeden Roadmap-Prozess und stellt sicher, dass Ihre KI-Implementierung DSGVO-konform ist und den Anforderungen des EU AI Act entspricht. Viele Unternehmen starten nicht, weil sie Angst vor rechtlichen Fallstricken haben – genau diese Unsicherheit nehmen wir Ihnen. Sie bekommen nicht nur technische Lösungen, sondern auch die rechtliche Absicherung. So können Sie mit gutem Gewissen loslegen, ohne sich Sorgen über Compliance-Verstöße zu machen."
+                },
+                {
                   question: "Ist das auch für kleine Unternehmen geeignet?",
                   answer: "Absolut. Wir arbeiten mit Einzelunternehmer:innen, Selbstständigen, Trainer:innen und Berater:innen genauso wie mit größeren Betrieben. Gerade kleine Unternehmen profitieren besonders, weil wir uns auf schnell umsetzbare Maßnahmen konzentrieren, die sofort Wirkung zeigen. Sie brauchen kein großes IT-Team oder riesige Budgets."
                 },
