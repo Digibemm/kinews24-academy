@@ -1,8 +1,82 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Button from '../components/Button';
 import { CheckCircle2, ArrowRight, Calendar, TrendingUp, Target, Zap, Shield } from 'lucide-react';
 
 const RoadmapPage: React.FC = () => {
+  useEffect(() => {
+    // Add FAQ Schema
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Was ist in der KI-Roadmap enthalten?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Die Roadmap umfasst sechs zentrale Komponenten: (1) Prozessanalyse und Potenzialidentifikation, (2) ROI-Berechnung für jeden Use Case, (3) Priorisierte Umsetzungsempfehlung, (4) Technologie-Auswahl, (5) Konkrete Implementierungsschritte, (6) Rechtliche Absicherung durch Fachanwältin – DSGVO-konform und EU AI Act-ready."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Was kostet eine KI-Roadmap?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ab 2.000€ – individuell nach Ihrem Bedarf. Sie können mit einem einzelnen Prozess starten und bei Erfolg weitere Bereiche angehen. Im kostenfreien Erstgespräch erstellen wir ein transparentes Angebot."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie stellen Sie sicher, dass wir rechtlich auf der sicheren Seite sind?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Wir haben eine Fachanwältin im Team, die jeden Roadmap-Prozess begleitet und sicherstellt, dass Ihre KI-Implementierung DSGVO-konform ist und den Anforderungen des EU AI Act entspricht."
+          }
+        }
+      ]
+    };
+
+    // Add Service Schema
+    const serviceSchema = {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "serviceType": "KI-Roadmap Beratung",
+      "name": "KI-Roadmap für den Mittelstand",
+      "description": "Individuelle KI-Strategie mit Prozessanalyse, ROI-Berechnung, priorisierten Maßnahmen und rechtlicher Absicherung. DSGVO-konform und EU AI Act-ready durch Fachanwältin.",
+      "provider": {
+        "@type": "Organization",
+        "name": "KINEWS24-Academy"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Deutschland"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "2000",
+        "priceCurrency": "EUR"
+      }
+    };
+
+    // Insert schemas
+    const faqScript = document.createElement('script');
+    faqScript.type = 'application/ld+json';
+    faqScript.id = 'roadmap-faq-schema';
+    faqScript.text = JSON.stringify(faqSchema);
+    document.head.appendChild(faqScript);
+
+    const serviceScript = document.createElement('script');
+    serviceScript.type = 'application/ld+json';
+    serviceScript.id = 'roadmap-service-schema';
+    serviceScript.text = JSON.stringify(serviceSchema);
+    document.head.appendChild(serviceScript);
+
+    return () => {
+      document.getElementById('roadmap-faq-schema')?.remove();
+      document.getElementById('roadmap-service-schema')?.remove();
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-brand-dark text-brand-text">
       {/* Hero Section */}

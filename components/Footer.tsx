@@ -62,7 +62,7 @@ const Footer: React.FC = () => {
                   </div>
                 </div>
               </div>
-              <p className="text-sm text-brand-muted">📧 hallo@kinews24.de</p>
+              <p className="text-sm text-brand-muted">📧 kontakt@kinews24-academy.de</p>
            </div>
         </div>
 

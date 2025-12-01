@@ -3,9 +3,77 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="KINEWS24-Academy" />
+    <meta name="geo.region" content="DE-HH" />
+    <meta name="geo.placename" content="Hamburg, Tutzing" />
     <title>KINEWS24-Academy | KI-Integration für den Mittelstand</title>
     <link rel="icon" type="image/png" href="/kinews24-academy-favicon.png" />
     <link rel="apple-touch-icon" href="/kinews24-academy-favicon.png" />
+
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "KINEWS24-Academy",
+      "alternateName": "KINEWS24 Academy",
+      "url": "https://kinews24-academy.de",
+      "logo": "https://kinews24-academy.de/Logo-kinews24-white.png",
+      "description": "KI-Transformationsagentur für den deutschen Mittelstand. DSGVO-konforme KI-Beratung, Roadmap-Entwicklung und Weiterbildung mit rechtlicher Absicherung durch Fachanwältin.",
+      "foundingDate": "2024",
+      "address": [
+        {
+          "@type": "PostalAddress",
+          "addressLocality": "Hamburg",
+          "addressCountry": "DE"
+        },
+        {
+          "@type": "PostalAddress",
+          "streetAddress": "Waxensteinstraße 4",
+          "addressLocality": "Tutzing",
+          "postalCode": "82327",
+          "addressCountry": "DE"
+        }
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "kontakt@kinews24-academy.de",
+        "contactType": "customer service",
+        "availableLanguage": ["de"]
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Deutschland"
+      }
+    }
+    </script>
+
+    <!-- LocalBusiness Schema Tutzing -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "KINEWS24-Academy Tutzing",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Waxensteinstraße 4",
+        "addressLocality": "Tutzing",
+        "postalCode": "82327",
+        "addressRegion": "Bayern",
+        "addressCountry": "DE"
+      },
+      "url": "https://kinews24-academy.de",
+      "email": "kontakt@kinews24-academy.de",
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "47.9097",
+        "longitude": "11.2792"
+      },
+      "priceRange": "€€",
+      "areaServed": ["Bayern", "München", "Starnberg", "Deutschland"]
+    }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
