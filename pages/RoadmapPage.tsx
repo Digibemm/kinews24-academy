@@ -381,6 +381,10 @@ const RoadmapPage: React.FC = () => {
             <div className="space-y-6">
               {[
                 {
+                  question: "Was ist in der KI-Roadmap enthalten?",
+                  answer: "Die Roadmap umfasst sechs zentrale Komponenten: (1) Prozessanalyse und Potenzialidentifikation – wir schauen genau, wo KI bei Ihnen den größten Hebel hat. (2) ROI-Berechnung für jeden Use Case – Sie sehen schwarz auf weiß, was sich rechnet. (3) Priorisierte Umsetzungsempfehlung – in der richtigen Reihenfolge starten. (4) Technologie-Auswahl – welche Tools passen wirklich zu Ihnen. (5) Konkrete Implementierungsschritte – kein Theoriegerede, sondern To-Dos. (6) Rechtliche Absicherung durch unsere Fachanwältin – DSGVO-konform und EU AI Act-ready. Sie erhalten einen klaren Aktionsplan, nicht nur eine Präsentation."
+                },
+                {
                   question: "Was kostet eine KI-Roadmap?",
                   answer: "Ab 2.000€ – individuell nach Ihrem Bedarf. Sie können mit einem einzelnen Prozess starten (z.B. Angebotsstellung automatisieren) und bei Erfolg weitere Bereiche angehen. Im kostenfreien Erstgespräch analysieren wir gemeinsam Ihr Potenzial und erstellen ein transparentes Angebot."
                 },
