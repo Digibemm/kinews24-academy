@@ -9,10 +9,7 @@ const Footer: React.FC = () => {
         {/* Trust Badges */}
         <div className="flex flex-wrap justify-center gap-6 mb-16 border-b border-white/5 pb-12">
            <div className="px-4 py-2 bg-white/5 rounded-full flex items-center gap-2 text-sm text-brand-muted">
-              ✅ BAFA-registriert
-           </div>
-           <div className="px-4 py-2 bg-white/5 rounded-full flex items-center gap-2 text-sm text-brand-muted">
-              🔒 DSGVO-konform & ISO 27001
+              🔒 DSGVO-konform
            </div>
            <div className="px-4 py-2 bg-white/5 rounded-full flex items-center gap-2 text-sm text-brand-muted">
               ⭐ 4.9/5.0 (32 Bew.)
