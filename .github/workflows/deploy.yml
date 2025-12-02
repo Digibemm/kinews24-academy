@@ -38,6 +38,7 @@ jobs:
 
       - name: Fix file permissions via SSH
         uses: appleboy/ssh-action@v1.0.0
+        continue-on-error: true
         with:
           host: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
