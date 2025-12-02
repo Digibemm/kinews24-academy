@@ -5,7 +5,7 @@ import { Calculator, Clock, DollarSign, Mail, CheckCircle, Settings, RotateCw, T
 const CostOfInaction: React.FC = () => {
   // Form state
   const [step, setStep] = useState(1);
-  const [processName, setProcessName] = useState('Lead-Qualifizierung');
+  const [processName, setProcessName] = useState('');
   const [minutesPerTask, setMinutesPerTask] = useState(30);
   const [tasksPerMonth, setTasksPerMonth] = useState(40);
   const [hourlyRate, setHourlyRate] = useState(50);
@@ -152,6 +152,7 @@ const CostOfInaction: React.FC = () => {
                         onChange={(e) => setProcessName(e.target.value)}
                         className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-4 py-4 text-base font-medium text-slate-900 focus:border-brand-accent focus:bg-white outline-none transition-all appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724%27 height=%2724%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%2364748b%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpolyline points=%276 9 12 15 18 9%27/%3E%3C/svg%3E')] bg-[position:right_0.75rem_center] bg-no-repeat"
                       >
+                        <option value="">Wähle einen Prozess...</option>
                         {processes.map((proc) => (
                           <option key={proc.id} value={proc.label}>
                             {proc.label}
@@ -178,10 +179,12 @@ const CostOfInaction: React.FC = () => {
                     </div>
 
                     {/* Dynamic Hint based on selection */}
-                    <div className="mt-4 p-4 rounded-xl bg-blue-50 border border-blue-100 flex items-start gap-3">
-                       <TrendingUp size={18} className="text-brand-accent mt-0.5 flex-shrink-0" />
-                       <p className="text-sm text-slate-700 leading-relaxed">{currentProcess.hint}</p>
-                    </div>
+                    {processName && (
+                      <div className="mt-4 p-4 rounded-xl bg-blue-50 border border-blue-100 flex items-start gap-3">
+                         <TrendingUp size={18} className="text-brand-accent mt-0.5 flex-shrink-0" />
+                         <p className="text-sm text-slate-700 leading-relaxed">{currentProcess.hint}</p>
+                      </div>
+                    )}
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -243,12 +246,13 @@ const CostOfInaction: React.FC = () => {
                   <Button
                     size="lg"
                     onClick={nextStep}
+                    disabled={!processName}
                     className="w-full shadow-lg shadow-brand-accent/20"
                   >
                     Ergebnis berechnen <ArrowRight className="ml-2" />
                   </Button>
                   <p className="text-xs text-slate-500 text-center mt-3">
-                    Ihre detaillierte Analyse wird im nächsten Schritt angezeigt
+                    {processName ? 'Ihre detaillierte Analyse wird im nächsten Schritt angezeigt' : 'Bitte wählen Sie zunächst einen Prozess aus'}
                   </p>
                 </div>
               </div>
@@ -299,6 +303,7 @@ const CostOfInaction: React.FC = () => {
                   <Button
                     size="lg"
                     onClick={nextStep}
+                    disabled={!processName}
                     className="w-full shadow-lg shadow-brand-accent/20"
                   >
                     Detailliertes Ergebnis anfordern <ArrowRight className="ml-2" />
