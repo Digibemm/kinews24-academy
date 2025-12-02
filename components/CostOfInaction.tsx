@@ -144,7 +144,24 @@ const CostOfInaction: React.FC = () => {
                     <label className="block text-sm font-bold text-slate-500 uppercase tracking-wider mb-3">
                       Welcher Prozess nervt Sie am meisten?
                     </label>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+
+                    {/* Mobile: Select Dropdown */}
+                    <div className="md:hidden">
+                      <select
+                        value={processName}
+                        onChange={(e) => setProcessName(e.target.value)}
+                        className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-4 py-4 text-base font-medium text-slate-900 focus:border-brand-accent focus:bg-white outline-none transition-all appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724%27 height=%2724%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%2364748b%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpolyline points=%276 9 12 15 18 9%27/%3E%3C/svg%3E')] bg-[position:right_0.75rem_center] bg-no-repeat"
+                      >
+                        {processes.map((proc) => (
+                          <option key={proc.id} value={proc.label}>
+                            {proc.label}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+
+                    {/* Desktop: Button Grid */}
+                    <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {processes.map((proc) => (
                         <button
                           key={proc.id}
@@ -159,6 +176,7 @@ const CostOfInaction: React.FC = () => {
                         </button>
                       ))}
                     </div>
+
                     {/* Dynamic Hint based on selection */}
                     <div className="mt-4 p-4 rounded-xl bg-blue-50 border border-blue-100 flex items-start gap-3">
                        <TrendingUp size={18} className="text-brand-accent mt-0.5 flex-shrink-0" />
