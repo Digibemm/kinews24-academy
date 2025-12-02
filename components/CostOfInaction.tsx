@@ -91,17 +91,20 @@ const CostOfInaction: React.FC = () => {
 
         {/* Header */}
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm mb-6">
-            <Calculator size={16} className="text-brand-accent" />
-            <span className="text-sm font-bold text-slate-700 tracking-wide uppercase">Kostenlos • 2 Minuten • Sofortiges Ergebnis</span>
+          <div className="inline-flex items-center gap-2 px-3 md:px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm mb-6">
+            <Calculator size={16} className="text-brand-accent shrink-0" />
+            <span className="text-xs md:text-sm font-bold text-slate-700 tracking-wide uppercase">
+              <span className="hidden sm:inline">Kostenlos • 2 Minuten • Sofortiges Ergebnis</span>
+              <span className="sm:hidden">Kostenlos • 2 Min.</span>
+            </span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-display font-bold text-slate-900 mb-3">
+          <h2 className="text-2xl md:text-4xl lg:text-5xl font-display font-bold text-slate-900 mb-3">
             Cost of Inaction Rechner
           </h2>
-          <p className="text-xl text-brand-accent font-medium mb-6">
+          <p className="text-lg md:text-xl text-brand-accent font-medium mb-6">
             Der Preis des Nichtstuns
           </p>
-          <p className="text-slate-500 text-lg max-w-2xl mx-auto">
+          <p className="text-slate-500 text-sm md:text-base lg:text-lg max-w-2xl mx-auto px-4">
             Über <strong className="text-slate-900">18.000€</strong> verschwenden deutsche Mittelständler durchschnittlich
             pro Jahr durch einen einzigen ineffizienten Prozess. Wie sieht es bei Ihnen aus?
           </p>
@@ -126,10 +129,10 @@ const CostOfInaction: React.FC = () => {
         {/* STEP 1: Process Selection + Data Input */}
         {step === 1 && (
           <div className="max-w-5xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
 
               {/* Left: Input Form */}
-              <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-xl shadow-slate-200/50">
+              <div className="bg-white p-6 md:p-8 rounded-3xl border border-slate-200 shadow-xl shadow-slate-200/50">
                 <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
                   <Settings size={20} className="text-brand-accent" />
                   Ihre Prozess-Daten

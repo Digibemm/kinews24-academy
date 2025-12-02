@@ -86,19 +86,24 @@ const Hero: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center py-8 md:py-12">
 
-        <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/10 mb-8 md:mb-12 animate-fade-in-up backdrop-blur-md max-w-full">
+        <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/10 mb-8 md:mb-12 animate-fade-in-up backdrop-blur-md max-w-[95%]">
           <span className="w-2 h-2 rounded-full bg-brand-cyan animate-pulse shrink-0"></span>
-          <span className="text-xs sm:text-sm font-medium text-brand-cyan tracking-wide">{coiCount} Unternehmen haben diese Woche ihren Cost of Inaction berechnet</span>
+          <span className="text-xs sm:text-sm font-medium text-brand-cyan tracking-wide">
+            <span className="hidden sm:inline">{coiCount} Unternehmen haben diese Woche ihren Cost of Inaction berechnet</span>
+            <span className="sm:hidden">{coiCount} Unternehmen nutzten den COI-Rechner</span>
+          </span>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-display font-bold text-white mb-6 md:mb-10 leading-tight tracking-tight px-2">
-          Sie wissen, dass <span className="text-gradient">KI wichtig ist.</span><br />
-          Wir zeigen Ihnen, wo Sie anfangen müssen.
+        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-display font-bold text-white mb-6 md:mb-10 leading-tight tracking-tight px-2">
+          Sie wissen, dass <span className="text-gradient">KI wichtig ist.</span>
+          <br className="hidden sm:block" />
+          <span className="block sm:inline"> Wir zeigen Ihnen, wo Sie anfangen müssen.</span>
         </h1>
 
-        <p className="max-w-2xl mx-auto text-base md:text-lg lg:text-xl text-brand-muted mb-10 md:mb-14 leading-relaxed px-4">
-          <span className="text-white font-medium">Ihre Wettbewerber nutzen KI bereits in ihren Prozessen.</span><br />
-          Wie viel Vorsprung geben Sie Ihnen noch?
+        <p className="max-w-2xl mx-auto text-sm sm:text-base md:text-lg lg:text-xl text-brand-muted mb-8 md:mb-14 leading-relaxed px-4">
+          <span className="text-white font-medium">Ihre Wettbewerber nutzen KI bereits in ihren Prozessen.</span>
+          <br className="hidden sm:block" />
+          <span className="block sm:inline mt-1 sm:mt-0"> Wie viel Vorsprung geben Sie Ihnen noch?</span>
         </p>
 
         <div className="flex flex-col items-center justify-center gap-4 mb-12 md:mb-20 px-4">
@@ -126,19 +131,19 @@ const Hero: React.FC = () => {
 
         {/* Social Proof Bar */}
         <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-16 mb-10 md:mb-12 pb-10 md:pb-12 border-b border-white/10 px-4">
-          <div className="text-center">
-            <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2">Ø 18.720 €</div>
-            <div className="text-xs sm:text-sm text-brand-muted">gespart pro Kunde/Jahr</div>
+          <div className="text-center w-full md:w-auto">
+            <div className="text-3xl md:text-4xl font-bold text-white mb-1">Ø 18.720 €</div>
+            <div className="text-xs text-brand-muted">gespart pro Kunde/Jahr</div>
           </div>
           <div className="hidden md:block w-px h-16 bg-white/10"></div>
-          <div className="text-center">
-            <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2">50+</div>
-            <div className="text-xs sm:text-sm text-brand-muted">Mittelständler vertrauen uns</div>
+          <div className="text-center w-full md:w-auto">
+            <div className="text-3xl md:text-4xl font-bold text-white mb-1">50+</div>
+            <div className="text-xs text-brand-muted">Mittelständler vertrauen uns</div>
           </div>
           <div className="hidden md:block w-px h-16 bg-white/10"></div>
-          <div className="text-center">
-            <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2">4,9/5</div>
-            <div className="text-xs sm:text-sm text-brand-muted">⭐⭐⭐⭐⭐ Kundenbewertung</div>
+          <div className="text-center w-full md:w-auto">
+            <div className="text-3xl md:text-4xl font-bold text-white mb-1">4,9/5</div>
+            <div className="text-xs text-brand-muted">⭐⭐⭐⭐⭐ Kundenbewertung</div>
           </div>
         </div>
 
@@ -158,10 +163,10 @@ const Hero: React.FC = () => {
           </a>
         </div>
 
-        <div className="border-t border-white/10 pt-10 md:pt-16 px-4">
-          <p className="text-xs sm:text-sm text-brand-muted mb-6 md:mb-8 uppercase tracking-widest">Powered by führender KI-Technologie</p>
+        <div className="border-t border-white/10 pt-8 md:pt-16 px-4">
+          <p className="text-xs text-brand-muted mb-6 md:mb-8 uppercase tracking-widest">Powered by führender KI-Technologie</p>
           <div className="relative overflow-hidden">
-            <div className="flex items-center gap-8 md:gap-12 animate-scroll">
+            <div className="flex items-center gap-6 md:gap-12 animate-scroll">
               {/* First set of logos */}
               <img src="/logos/chatgpt.png" alt="ChatGPT" className="h-6 sm:h-8 md:h-10 w-auto opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" />
               <img src="/logos/claude.png" alt="Claude" className="h-6 sm:h-8 md:h-10 w-auto opacity-60 hover:opacity-100 transition-opacity grayscale hover:grayscale-0" />

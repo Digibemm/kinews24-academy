@@ -15,15 +15,16 @@ const BlogPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#F8FAFC]">
       {/* Hero Section */}
-      <section className="bg-brand-dark pt-32 pb-20">
+      <section className="bg-brand-dark pt-28 md:pt-32 pb-12 md:pb-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-6xl font-display font-bold text-white mb-6">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-white mb-4 md:mb-6">
               KI-Wissen, das wirkt
             </h1>
-            <p className="text-xl text-brand-muted leading-relaxed">
+            <p className="text-base md:text-lg lg:text-xl text-brand-muted leading-relaxed">
               Praktische Einblicke, rechtliche Updates und konkrete Anleitungen für KI im Mittelstand.
-              Kein Marketing-Blabla – sondern Wissen, das Sie direkt umsetzen können.
+              <br className="hidden sm:block" />
+              <span className="block sm:inline mt-1 sm:mt-0"> Kein Marketing-Blabla – sondern Wissen, das Sie direkt umsetzen können.</span>
             </p>
           </div>
         </div>
@@ -45,26 +46,35 @@ const BlogPage: React.FC = () => {
                   onClick={() => handlePostClick(post.slug)}
                   className="bg-white rounded-2xl overflow-hidden border border-slate-200 hover:shadow-xl transition-all duration-300 cursor-pointer group"
                 >
-                  <div className="p-8">
-                    <div className="flex items-center gap-4 text-sm text-slate-600 mb-4">
-                      <span className="px-3 py-1 bg-brand-accent/10 text-brand-accent rounded-full font-medium">
+                  <div className="p-6 md:p-8">
+                    <div className="flex flex-wrap items-center gap-2 md:gap-4 text-xs md:text-sm text-slate-600 mb-4">
+                      <span className="px-2 md:px-3 py-1 bg-brand-accent/10 text-brand-accent rounded-full font-medium">
                         {post.category}
                       </span>
                       <div className="flex items-center gap-1">
-                        <Calendar size={16} />
-                        {new Date(post.publishDate).toLocaleDateString('de-DE', {
-                          day: '2-digit',
-                          month: 'long',
-                          year: 'numeric'
-                        })}
+                        <Calendar size={14} className="shrink-0" />
+                        <span className="hidden sm:inline">
+                          {new Date(post.publishDate).toLocaleDateString('de-DE', {
+                            day: '2-digit',
+                            month: 'long',
+                            year: 'numeric'
+                          })}
+                        </span>
+                        <span className="sm:hidden">
+                          {new Date(post.publishDate).toLocaleDateString('de-DE', {
+                            day: '2-digit',
+                            month: 'short',
+                            year: 'numeric'
+                          })}
+                        </span>
                       </div>
                       <div className="flex items-center gap-1">
-                        <Clock size={16} />
+                        <Clock size={14} className="shrink-0" />
                         {post.readTime}
                       </div>
                     </div>
 
-                    <h3 className="text-2xl font-bold text-slate-900 mb-4 group-hover:text-brand-accent transition-colors">
+                    <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 md:mb-4 group-hover:text-brand-accent transition-colors leading-tight">
                       {post.title}
                     </h3>
 
