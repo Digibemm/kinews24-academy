@@ -94,13 +94,15 @@ const Hero: React.FC = () => {
           </span>
         </div>
 
-        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-display font-bold text-white mb-6 md:mb-10 leading-tight px-6 sm:px-4 break-words hyphens-auto">
-          Sie wissen, dass <span className="text-gradient">KI wichtig ist.</span>
+        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-display font-bold text-white mb-6 md:mb-10 leading-tight px-6 sm:px-4">
+          Sie wissen, dass
+          <br className="sm:hidden" />
+          <span className="text-gradient"> KI wichtig ist.</span>
           <br className="hidden sm:block" />
           <span className="block sm:inline"> Wir zeigen Ihnen, wo Sie anfangen müssen.</span>
         </h1>
 
-        <p className="max-w-2xl mx-auto text-base md:text-lg lg:text-xl text-brand-muted mb-8 md:mb-14 leading-relaxed px-6 sm:px-4 break-words hyphens-auto">
+        <p className="max-w-2xl mx-auto text-base md:text-lg lg:text-xl text-brand-muted mb-8 md:mb-14 leading-relaxed px-6 sm:px-4">
           <span className="text-white font-medium">Ihre Wettbewerber nutzen KI bereits in ihren Prozessen.</span>
           <br className="hidden sm:block" />
           <span className="block sm:inline mt-1 sm:mt-0"> Wie viel Vorsprung geben Sie Ihnen noch?</span>
@@ -119,7 +121,7 @@ const Hero: React.FC = () => {
             <span className="sm:hidden">COI berechnen</span>
             <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
           </Button>
-          <p className="text-xs sm:text-sm text-brand-muted text-center max-w-md px-6 break-words hyphens-auto">
+          <p className="text-xs sm:text-sm text-brand-muted text-center max-w-md px-6">
             <span className="text-brand-cyan font-medium">In 2 Minuten sehen Sie, was Sie durch Stillstand verlieren</span>
             <br />
             <span className="inline-flex items-center gap-2 mt-2 flex-wrap justify-center">
