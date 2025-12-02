@@ -79,12 +79,12 @@ const Hero: React.FC = () => {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-32 md:pt-40 pb-32 md:pb-40 overflow-hidden bg-brand-dark">
+    <section className="relative min-h-screen flex items-center justify-center pt-32 md:pt-40 pb-32 md:pb-40 overflow-hidden bg-brand-dark w-full">
       {/* Background Ambience */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-brand-accent/20 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[800px] h-[600px] bg-brand-cyan/10 blur-[120px] rounded-full pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center py-8 md:py-12">
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center py-8 md:py-12">
 
         <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full bg-white/5 border border-white/10 mb-8 md:mb-12 animate-fade-in-up backdrop-blur-md max-w-[95%]">
           <span className="w-2 h-2 rounded-full bg-brand-cyan animate-pulse shrink-0"></span>
@@ -94,13 +94,13 @@ const Hero: React.FC = () => {
           </span>
         </div>
 
-        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-display font-bold text-white mb-6 md:mb-10 leading-tight tracking-tight px-2">
+        <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-display font-bold text-white mb-6 md:mb-10 leading-tight px-6 sm:px-4 break-words hyphens-auto">
           Sie wissen, dass <span className="text-gradient">KI wichtig ist.</span>
           <br className="hidden sm:block" />
           <span className="block sm:inline"> Wir zeigen Ihnen, wo Sie anfangen müssen.</span>
         </h1>
 
-        <p className="max-w-2xl mx-auto text-sm sm:text-base md:text-lg lg:text-xl text-brand-muted mb-8 md:mb-14 leading-relaxed px-4">
+        <p className="max-w-2xl mx-auto text-base md:text-lg lg:text-xl text-brand-muted mb-8 md:mb-14 leading-relaxed px-6 sm:px-4 break-words hyphens-auto">
           <span className="text-white font-medium">Ihre Wettbewerber nutzen KI bereits in ihren Prozessen.</span>
           <br className="hidden sm:block" />
           <span className="block sm:inline mt-1 sm:mt-0"> Wie viel Vorsprung geben Sie Ihnen noch?</span>
@@ -119,10 +119,10 @@ const Hero: React.FC = () => {
             <span className="sm:hidden">COI berechnen</span>
             <ArrowRight className="ml-2 w-4 h-4 sm:w-5 sm:h-5" />
           </Button>
-          <p className="text-xs sm:text-sm text-brand-muted text-center max-w-md px-2">
+          <p className="text-xs sm:text-sm text-brand-muted text-center max-w-md px-6 break-words hyphens-auto">
             <span className="text-brand-cyan font-medium">In 2 Minuten sehen Sie, was Sie durch Stillstand verlieren</span>
             <br />
-            <span className="inline-flex items-center gap-2 mt-2">
+            <span className="inline-flex items-center gap-2 mt-2 flex-wrap justify-center">
               <span className="w-2 h-2 rounded-full bg-green-500 shrink-0"></span>
               <span>Kostenlos • Keine Anmeldung • Sofortiges Ergebnis</span>
             </span>
