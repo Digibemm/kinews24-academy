@@ -132,13 +132,13 @@ const CostOfInaction: React.FC = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
 
               {/* Left: Input Form */}
-              <div className="bg-white p-6 md:p-8 rounded-3xl border border-slate-200 shadow-xl shadow-slate-200/50">
+              <div className="bg-white p-6 md:p-8 rounded-3xl border border-slate-200 shadow-xl shadow-slate-200/50 lg:col-span-1">
                 <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
                   <Settings size={20} className="text-brand-accent" />
                   Ihre Prozess-Daten
                 </h3>
 
-                <div className="space-y-8">
+                <div className="space-y-6">
                   {/* Process Selector */}
                   <div>
                     <label className="block text-sm font-bold text-slate-500 uppercase tracking-wider mb-3">
@@ -219,10 +219,24 @@ const CostOfInaction: React.FC = () => {
                     </div>
                   </div>
                 </div>
+
+                {/* Mobile: Button direkt unter Formular */}
+                <div className="mt-8 lg:hidden">
+                  <Button
+                    size="lg"
+                    onClick={nextStep}
+                    className="w-full shadow-lg shadow-brand-accent/20"
+                  >
+                    Ergebnis berechnen <ArrowRight className="ml-2" />
+                  </Button>
+                  <p className="text-xs text-slate-500 text-center mt-3">
+                    Ihre detaillierte Analyse wird im nächsten Schritt angezeigt
+                  </p>
+                </div>
               </div>
 
-              {/* Right: Live Preview (Blurred) */}
-              <div className="bg-brand-dark rounded-3xl overflow-hidden shadow-2xl shadow-slate-400/20 relative text-white flex flex-col justify-center p-8">
+              {/* Right: Live Preview (Blurred) - Desktop only */}
+              <div className="hidden lg:flex bg-brand-dark rounded-3xl overflow-hidden shadow-2xl shadow-slate-400/20 relative text-white flex-col justify-center p-8">
                 <div className="h-2 w-full bg-gradient-to-r from-brand-accent to-brand-cyan absolute top-0 left-0"></div>
 
                 <div className="text-center mb-8">
