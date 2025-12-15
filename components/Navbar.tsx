@@ -354,7 +354,7 @@ const Navbar: React.FC = () => {
       {/* Mobile Menu - Fullscreen Overlay */}
       {isOpen && (
         <div
-          className="lg:hidden fixed inset-0 bg-brand-dark z-40 overflow-y-auto"
+          className="lg:hidden fixed inset-0 bg-brand-dark z-[60] overflow-y-auto"
           style={{ top: navbarHeight }}
         >
           <div className="px-4 py-6 space-y-2">
