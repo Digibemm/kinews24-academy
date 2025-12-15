@@ -12,6 +12,7 @@ const CostOfInaction: React.FC = () => {
   const [email, setEmail] = useState('');
   const [dsgvoAccepted, setDsgvoAccepted] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [showProcessError, setShowProcessError] = useState(false);
 
   // Define processes with specific Opportunity Cost Factors
   const processes = [
@@ -82,7 +83,20 @@ const CostOfInaction: React.FC = () => {
     }
   };
 
-  const nextStep = () => setStep(step + 1);
+  const handleNextStep = () => {
+    if (!processName) {
+      setShowProcessError(true);
+      // Scroll to process selector
+      const processSelector = document.getElementById('process-selector');
+      if (processSelector) {
+        processSelector.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      return;
+    }
+    setShowProcessError(false);
+    setStep(step + 1);
+  };
+
   const prevStep = () => setStep(step - 1);
 
   return (
@@ -140,17 +154,34 @@ const CostOfInaction: React.FC = () => {
 
                 <div className="space-y-6">
                   {/* Process Selector */}
-                  <div>
+                  <div id="process-selector">
                     <label className="block text-sm font-bold text-slate-500 uppercase tracking-wider mb-3">
-                      Welcher Prozess nervt Sie am meisten?
+                      Welcher Prozess nervt Sie am meisten? *
                     </label>
+
+                    {/* Error Message */}
+                    {showProcessError && (
+                      <div className="mb-3 p-3 bg-red-50 border-2 border-red-300 rounded-xl flex items-start gap-2 animate-pulse">
+                        <span className="text-red-600 font-bold text-lg">⚠️</span>
+                        <p className="text-sm font-bold text-red-700">
+                          Bitte wählen Sie einen Prozess aus, bevor Sie fortfahren.
+                        </p>
+                      </div>
+                    )}
 
                     {/* Mobile: Select Dropdown */}
                     <div className="md:hidden">
                       <select
                         value={processName}
-                        onChange={(e) => setProcessName(e.target.value)}
-                        className="w-full bg-slate-50 border-2 border-slate-100 rounded-xl px-4 py-4 text-base font-medium text-slate-900 focus:border-brand-accent focus:bg-white outline-none transition-all appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724%27 height=%2724%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%2364748b%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpolyline points=%276 9 12 15 18 9%27/%3E%3C/svg%3E')] bg-[position:right_0.75rem_center] bg-no-repeat"
+                        onChange={(e) => {
+                          setProcessName(e.target.value);
+                          setShowProcessError(false);
+                        }}
+                        className={`w-full bg-slate-50 border-2 rounded-xl px-4 py-4 text-base font-medium text-slate-900 focus:bg-white outline-none transition-all appearance-none bg-[url('data:image/svg+xml;charset=utf-8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2724%27 height=%2724%27 viewBox=%270 0 24 24%27 fill=%27none%27 stroke=%27%2364748b%27 stroke-width=%272%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27%3E%3Cpolyline points=%276 9 12 15 18 9%27/%3E%3C/svg%3E')] bg-[position:right_0.75rem_center] bg-no-repeat ${
+                          showProcessError
+                            ? 'border-red-400 focus:border-red-500 bg-red-50'
+                            : 'border-slate-100 focus:border-brand-accent'
+                        }`}
                       >
                         <option value="">Wähle einen Prozess...</option>
                         {processes.map((proc) => (
@@ -162,11 +193,14 @@ const CostOfInaction: React.FC = () => {
                     </div>
 
                     {/* Desktop: Button Grid */}
-                    <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div className={`hidden md:grid grid-cols-1 sm:grid-cols-2 gap-3 ${showProcessError ? 'ring-2 ring-red-400 rounded-xl p-2' : ''}`}>
                       {processes.map((proc) => (
                         <button
                           key={proc.id}
-                          onClick={() => setProcessName(proc.label)}
+                          onClick={() => {
+                            setProcessName(proc.label);
+                            setShowProcessError(false);
+                          }}
                           className={`px-4 py-3 rounded-xl text-sm font-medium text-left transition-all duration-200 border relative overflow-hidden ${
                             processName === proc.label
                               ? 'bg-brand-accent text-white border-brand-accent shadow-lg shadow-brand-accent/30'
@@ -245,8 +279,7 @@ const CostOfInaction: React.FC = () => {
                 <div className="mt-8 lg:hidden">
                   <Button
                     size="lg"
-                    onClick={nextStep}
-                    disabled={!processName}
+                    onClick={handleNextStep}
                     className="w-full shadow-lg shadow-brand-accent/20"
                   >
                     Ergebnis berechnen <ArrowRight className="ml-2" />
@@ -302,8 +335,7 @@ const CostOfInaction: React.FC = () => {
                 <div className="mt-8 text-center">
                   <Button
                     size="lg"
-                    onClick={nextStep}
-                    disabled={!processName}
+                    onClick={handleNextStep}
                     className="w-full shadow-lg shadow-brand-accent/20"
                   >
                     Detailliertes Ergebnis anfordern <ArrowRight className="ml-2" />
