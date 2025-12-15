@@ -20,6 +20,18 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
   useEffect(() => {
     const handlePathChange = () => setCurrentPath(window.location.pathname);
     window.addEventListener('popstate', handlePathChange);
@@ -134,6 +146,9 @@ const Navbar: React.FC = () => {
       }
     }
   };
+
+  // Calculate navbar height for mobile menu positioning
+  const navbarHeight = scrolled ? '64px' : '80px';
 
   return (
     <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-brand-dark/95 backdrop-blur-xl border-b border-white/10 py-3' : 'bg-brand-dark/80 backdrop-blur-md py-5'}`}>
@@ -325,7 +340,11 @@ const Navbar: React.FC = () => {
 
           {/* Mobile Menu Button */}
           <div className="lg:hidden">
-            <button onClick={() => setIsOpen(!isOpen)} className="text-white p-2">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-white p-3 -mr-3 hover:bg-white/10 rounded-lg transition-colors active:bg-white/20"
+              aria-label={isOpen ? 'Menü schließen' : 'Menü öffnen'}
+            >
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
@@ -334,14 +353,18 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu - Fullscreen Overlay */}
       {isOpen && (
-        <div className="lg:hidden fixed inset-0 top-[72px] bg-brand-dark z-40 overflow-y-auto">
+        <div
+          className="lg:hidden fixed inset-0 bg-brand-dark z-40 overflow-y-auto"
+          style={{ top: navbarHeight }}
+        >
           <div className="px-4 py-6 space-y-2">
 
             {/* Roadmap & Agentur Akkordeon */}
             <div className="border-b border-white/10 pb-2">
               <button
                 onClick={() => setMobileRoadmapOpen(!mobileRoadmapOpen)}
-                className="w-full flex items-center justify-between px-3 py-3 text-base font-medium text-white hover:bg-white/5 rounded-md transition-colors"
+                className="w-full flex items-center justify-between px-4 py-4 text-base font-medium text-white hover:bg-white/5 rounded-md transition-colors active:bg-white/10"
+                aria-expanded={mobileRoadmapOpen}
               >
                 <span>Roadmap & Agentur</span>
                 <ChevronDown className={`transition-transform ${mobileRoadmapOpen ? 'rotate-180' : ''}`} size={20} />
@@ -377,7 +400,8 @@ const Navbar: React.FC = () => {
             <div className="border-b border-white/10 pb-2">
               <button
                 onClick={() => setMobileAcademyOpen(!mobileAcademyOpen)}
-                className="w-full flex items-center justify-between px-3 py-3 text-base font-medium text-white hover:bg-white/5 rounded-md transition-colors"
+                className="w-full flex items-center justify-between px-4 py-4 text-base font-medium text-white hover:bg-white/5 rounded-md transition-colors active:bg-white/10"
+                aria-expanded={mobileAcademyOpen}
               >
                 <span>Academy</span>
                 <ChevronDown className={`transition-transform ${mobileAcademyOpen ? 'rotate-180' : ''}`} size={20} />
@@ -420,7 +444,7 @@ const Navbar: React.FC = () => {
                     handleNavigation(e, link.href);
                     setIsOpen(false);
                   }}
-                  className={`block px-3 py-3 text-base font-medium rounded-md transition-colors ${
+                  className={`block px-4 py-4 text-base font-medium rounded-md transition-colors active:bg-white/10 ${
                     isActive
                       ? 'text-white bg-white/10'
                       : link.label === 'COI-Rechner'
