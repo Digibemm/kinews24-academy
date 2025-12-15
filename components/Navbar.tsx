@@ -151,27 +151,28 @@ const Navbar: React.FC = () => {
   const navbarHeight = scrolled ? '64px' : '80px';
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-brand-dark/95 backdrop-blur-xl border-b border-white/10 py-3' : 'bg-brand-dark/80 backdrop-blur-md py-5'}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center">
+    <>
+      <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-brand-dark/95 backdrop-blur-xl border-b border-white/10 py-3' : 'bg-brand-dark/80 backdrop-blur-md py-5'}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center">
 
-          {/* Logo */}
-          <div className="flex items-center">
-            <a
-              href="/"
-              onClick={(e) => handleNavigation(e, '/')}
-              className="flex items-center group"
-            >
-              <img
-                src="/Logo-kinews24-white.png"
-                alt="KINEWS24 Academy"
-                className="h-10 w-auto transition-opacity group-hover:opacity-80"
-              />
-            </a>
-          </div>
+            {/* Logo */}
+            <div className="flex items-center">
+              <a
+                href="/"
+                onClick={(e) => handleNavigation(e, '/')}
+                className="flex items-center group"
+              >
+                <img
+                  src="/Logo-kinews24-white.png"
+                  alt="KINEWS24 Academy"
+                  className="h-10 w-auto transition-opacity group-hover:opacity-80"
+                />
+              </a>
+            </div>
 
-          {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center space-x-8">
+            {/* Desktop Nav */}
+            <div className="hidden lg:flex items-center space-x-8">
 
             {/* Roadmap & Agentur Mega Menu */}
             <div
@@ -350,11 +351,12 @@ const Navbar: React.FC = () => {
           </div>
         </div>
       </div>
+    </nav>
 
-      {/* Mobile Menu - Fullscreen Overlay */}
+    {/* Mobile Menu - Fullscreen Overlay */}
       {isOpen && (
         <div
-          className="lg:hidden fixed inset-0 bg-brand-dark z-[60] overflow-y-auto"
+          className="lg:hidden fixed inset-0 bg-brand-dark z-[100] overflow-y-auto"
           style={{ top: navbarHeight }}
         >
           <div className="px-4 py-6 space-y-2">
@@ -474,7 +476,7 @@ const Navbar: React.FC = () => {
           </div>
         </div>
       )}
-    </nav>
+    </>
   );
 };
 
